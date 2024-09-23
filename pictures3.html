@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Carousel</title>
+  </head>
+  <body>
+    <div id="carousel" style="width: 100%; overflow: hidden">
+      <img src="./cartoon1.jpeg" alt="Image 1" onmouseover="picChange()" />
+      <img src="./cartoon2.jpeg" alt="Image 2" onmouseover="picChange()" />
+      <img src="./cartoon3.jpeg" alt="Image 3" onmouseover="picChange()" />
+    </div>
+    <script>
+      let currentImageIndex = 0;
+      const imageUrls = [
+        "./cartoon1.jpeg",
+        "./cartoon2.jpeg",
+        "./cartoon3.jpeg",
+      ];
+      const carousel = document.getElementById("carousel");
+
+      function changeImage() {
+        currentImageIndex = (currentImageIndex + 1) % imageUrls.length; // Loop back to first image
+        // Automatic image switching logic can be added here (optional)
+      }
+
+      function picChange() {
+        for (let i = 0; i < carousel.children.length; i++) {
+          carousel.children[i].src =
+            imageUrls[(currentImageIndex + i) % imageUrls.length];
+        }
+      }
+
+      // Change image every 3 seconds (optional)
+      setTimeout(changeImage, 1000);
+    </script>
+  </body>
+</html>
